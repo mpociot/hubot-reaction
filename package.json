@@ -16,9 +16,7 @@
     "url": "https://github.com/jakswa/hubot-reaction/issues"
   },
   "dependencies": {
-    "coffee-script": "~1.6",
-    "request": "~2.33.0",
-    "cheerio": "~0.13.1"
+    "coffee-script": "~1.6"
   },
   "devDependencies": {
     "mocha": "*",
