@@ -1,25 +1,27 @@
 # Description:
-#   Cute me is a way to get pictures of cute things
+#   Reagion gifs
 #
 # Dependencies:
 #   None
 #
 # Configuration:
 #   None
-#
+# 
 # Commands:
-#   hubot cute me - Receive a cute thing
-#   unicorn chaser - Receieve a cute thing
+#   !reply tag - returns reaction gif from replygif.net, with that tag
+# 
+format = require('util').format
 module.exports = (robot) ->
-  robot.respond /cute me/, (msg) ->
-    cuteMe(msg)
-
-  robot.hear /unicorn chaser/, (msg) ->
-    cuteMe(msg)
-
-  cuteMe = (msg) ->
-    msg.http('http://www.reddit.com/r/aww/.json')
+  robot.parseReplyGifTag = (text) ->
+    text.toLowerCase().replace(/[^\w \-]+/g, '').replace(/--+/g, '').replace(/\ /g, '-')
+  robot.hear /^!reply (.+)$/, (msg) ->
+    msg.http('http://replygif.net/api/gifs?tag='+tag+'&api-key=39YAprx5Yi')
       .header('Accept', 'application/json')
       .get() (err, response, body) ->
         results = JSON.parse(body)
-        msg.send (msg.random results.data.children).data.url.concat('.png')
+        if results.length == 0
+          errorMsg = "no gifs for '#{tag}' -- probably invalid category/tag"
+          robot.send {user: {name: msg.message.user}}, errorMsg
+        else
+          ind = Math.floor(Math.random() * results.length)
+          msg.send results[ind].file
