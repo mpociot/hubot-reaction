@@ -1,6 +1,8 @@
 # Description:
-#   https://github.com/jakswa/hubot-reaction
+#   Reagion gifs
 #
+# Dependencies:
+#   None
 #
 # Configuration:
 #   None
@@ -8,8 +10,6 @@
 # Commands:
 #   !reply tag - returns reaction gif from replygif.net, with that tag
 # 
-# Author:
-#   jakswa 
 format = require('util').format
 module.exports = (robot) ->
   robot.parseReplyGifTag = (text) ->
