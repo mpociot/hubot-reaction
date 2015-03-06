@@ -10,10 +10,10 @@
   ],
   "repository": {
     "type": "git",
-    "url": "git://github.com/jakswa/hubot-reaction.git"
+    "url": "git://github.com/mpociot/hubot-reaction.git"
   },
   "bugs": {
-    "url": "https://github.com/jakswa/hubot-reaction/issues"
+    "url": "https://github.com/mpociot/hubot-reaction/issues"
   },
   "dependencies": {
     "coffee-script": "~1.6"
